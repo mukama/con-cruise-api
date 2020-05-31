@@ -9,7 +9,8 @@ export const databaseProviders = [
       type: "sqlite",
       database: `${path.resolve(__dirname, "..")}/data/concruise.sqlite`,
       entities: [ User ],
-      logging: true
+      logging: true,
+      synchronize: true,
     }),
   },
 ];

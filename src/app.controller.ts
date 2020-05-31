@@ -6,6 +6,11 @@ import { UsersService } from './users/users.service';
 export class AppController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Get('/seed123')
+  async seedData(): Promise<string> {
+    return this.usersService.seed();
+  }
+
   @Get('/customer')
   async getCustomers(): Promise<User[]> {
     return await this.usersService.findAll(UserType.CUSTOMER);

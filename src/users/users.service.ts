@@ -1,47 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { UserType, User } from './user.entity';
+import { SeedUsers } from 'src/database/database.seed';
 
 @Injectable()
 export class UsersService {
   private readonly users: User[];
 
-  constructor() {
-    this.users = [
-      {
-        id: 1,
-        name: 'john',
-        longitude: 75.57,
-        latitude: 75.57,
-        rides: 0,
-        type: UserType.CUSTOMER,
-      },
-      {
-        id: 2,
-        name: 'chris',
-        longitude: 73.5352,
-        latitude: 75.57,
-        rides: 0,
-        type: UserType.CUSTOMER,
-      },
-      {
-        id: 3,
-        name: 'maria',
-        longitude: 35.35,
-        latitude: 75.57,
-        rides: 0,
-        type: UserType.CUSTOMER,
-      },
-    ];
+  constructor(
+    @Inject('USER_REPOSITORY')
+    private userRepository: Repository<User>,
+  ) { }
+
+  async seed(): Promise<any> {
+    return this.userRepository.insert(SeedUsers);
   }
-  
+
   async findOne(id: number): Promise<User | undefined> {
-    return this.users.find(user => user.id === id);
+    return this.userRepository.findOne({ id });
   }
 
   async findAll(type: UserType): Promise<User[] | undefined> {
-    throw new Error("Method not implemented.");
+    return this.userRepository.find({ type });
   }
   async match(): Promise<string> {
     throw new Error("Method not implemented.");

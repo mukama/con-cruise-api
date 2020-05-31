@@ -5,7 +5,7 @@ export enum UserType {
   CRUISER = 'cruiser',
 }
 
-@Entity("user")
+@Entity('Users')
 export class User {
   @PrimaryGeneratedColumn()
   id!: number
@@ -27,6 +27,7 @@ export class User {
 
   @Column({
     type: 'simple-enum',
+    default: UserType.CUSTOMER,
     enum: UserType
   })
   type: UserType;
