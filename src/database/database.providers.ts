@@ -1,6 +1,6 @@
 import { createConnection } from 'typeorm';
 import * as path from "path"
-import { User } from "../user/user.entity"
+import { User } from "../users/user.entity"
 
 export const databaseProviders = [
   {

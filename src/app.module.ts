@@ -1,10 +1,21 @@
+
+import * as path from 'path';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { User } from './users/user.entity';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: "sqlite",
+      database: `${path.resolve(__dirname, "..")}/data/con-cruise.sqlite`,
+      entities: [ User ],
+      logging: true
+    }),
+    UsersModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
