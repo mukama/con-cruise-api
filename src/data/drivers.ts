@@ -1,4 +1,4 @@
-export const SeedUsers = [
+export const SeedDrivers = [
   {
     "id": 1,
     "name": "Kristi Enser",

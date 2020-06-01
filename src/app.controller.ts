@@ -1,28 +1,28 @@
-import { Controller, Get } from '@nestjs/common';
-import { UserType, User } from './users/user.entity';
+import { Controller, Get, Post, Body } from '@nestjs/common';
+import { User } from './users/user.interface';
 import { UsersService } from './users/users.service';
 
 @Controller()
 export class AppController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('/seed123')
-  async seedData(): Promise<string> {
-    return this.usersService.seed();
+  @Get('/add')
+  addCustomer(): number {
+    return this.usersService.addCustomer();
   }
 
   @Get('/customer')
-  async getCustomers(): Promise<User[]> {
-    return await this.usersService.findAll(UserType.CUSTOMER);
+  getCustomers(): User[] {
+    return this.usersService.getCustomers();
   }
 
   @Get('/cruiser')
-  async getCruisers(): Promise<User[]> {
-    return await this.usersService.findAll(UserType.CRUISER);
+  getCruisers(): User[] {
+    return this.usersService.getCruisers();
   }
 
   @Get('/match')
-  async match(): Promise<string> {
-    return await this.usersService.match();
+  match(): string {
+    return this.usersService.match();
   }
 }
