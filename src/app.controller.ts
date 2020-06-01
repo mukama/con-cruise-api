@@ -6,7 +6,7 @@ import { UsersService } from './users/users.service';
 export class AppController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post('/add')
+  @Post('/customer')
   addCustomer(@Body() user: Partial<User>): number {
     return this.usersService.addCustomer(user);
   }
