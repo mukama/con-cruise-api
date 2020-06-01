@@ -6,9 +6,9 @@ import { UsersService } from './users/users.service';
 export class AppController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('/add')
-  addCustomer(): number {
-    return this.usersService.addCustomer();
+  @Post('/add')
+  addCustomer(@Body() user: Partial<User>): number {
+    return this.usersService.addCustomer(user);
   }
 
   @Get('/customer')
@@ -16,9 +16,9 @@ export class AppController {
     return this.usersService.getCustomers();
   }
 
-  @Get('/cruiser')
-  getCruisers(): User[] {
-    return this.usersService.getCruisers();
+  @Get('/driver')
+  getDrivers(): User[] {
+    return this.usersService.getDrivers();
   }
 
   @Get('/match')
