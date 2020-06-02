@@ -2,7 +2,7 @@
 
 ## Description
 
-This implementaion uses the [hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm) to solve an optimization problem in demand fulfillment between customers and the cruisers.
+Con Cruise API solves an optimization problem in demand fulfillment between customers and the cruisers. This implementaion uses the hungarian algorithm, a combinatorial optimization algorithm that solves this specific assignment problem.
 
 ## Installation
 
