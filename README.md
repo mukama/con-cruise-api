@@ -23,6 +23,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Adding a new customer
+
+```
+curl -d '{"name": "Caesar Mukama", "latitude": 8.0093062, "longitude": -62.4015536, "rides": 49, "rating": 4}' -H "Content-Type: application/json" -X POST http://localhost:3000/customer
+```
+
 ## CLI
 
 https://github.com/mukama/con-cruise-cli

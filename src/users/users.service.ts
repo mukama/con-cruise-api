@@ -47,12 +47,12 @@ export class UsersService {
     return (distanceScore + ratingScore + ridesScore1 + ridesScore2) - MAX_SCORE;
   }
 
-  getMatrix(customer: User[], driver: User[]): any[] {
+  getMatrix(customers: User[], drivers: User[]): any[] {
     const scoresMatrix = [];
-    for (let i = 0; i < customer.length; i++) {
+    for (let i = 0; i < customers.length; i++) {
       const driverScore = [];
-      for (let j = 0; j < driver.length; j++) {
-        driverScore.push(this.score(customer[i], driver[j]));
+      for (let j = 0; j < drivers.length; j++) {
+        driverScore.push(this.score(customers[i], drivers[j]));
       }
       scoresMatrix.push(driverScore);
     }
